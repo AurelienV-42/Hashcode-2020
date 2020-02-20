@@ -41,6 +41,7 @@ def parse(path_to_file):
 
 
 def main():
+    parse(sys.argv[1])
     print(B, L, D)
     print(S)
     print(Library)
