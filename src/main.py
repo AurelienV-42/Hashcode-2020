@@ -9,6 +9,10 @@ S = []
 Library = []
 
 
+def lib_ratio(lib):
+    lib["R"] = lib["N"] / lib["M"] + lib["T"]
+
+
 def parse(path_to_file):
     global B, L, D, S, Library
     file = open(path_to_file, "r")
@@ -42,6 +46,8 @@ def parse(path_to_file):
 
 def main():
     parse(sys.argv[1])
+    for Lib in Library:
+        lib_ratio(Lib)
     print(B, L, D)
     print(S)
     print(Library)
