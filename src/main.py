@@ -63,7 +63,6 @@ def loop():
 
     days = 0
 
-
     for i in range(0, len(LIBRARY)):
         if LIBRARY[i]["UP"] != LIBRARY[i]["T"]:
             LIBRARY[i]["UP"] += 1
