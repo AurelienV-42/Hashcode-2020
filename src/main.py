@@ -2,11 +2,16 @@
 
 import sys
 
+# Input
 B = 0
 L = 0
 D = 0
 S = []
-Library = []
+LIBRARY = []
+
+# Output
+NB_LIBRARY = 0
+WHICH_LIBRARY = []
 
 
 def lib_ratio(lib):
@@ -14,7 +19,7 @@ def lib_ratio(lib):
 
 
 def parse(path_to_file):
-    global B, L, D, S, Library
+    global B, L, D, S, LIBRARY
     file = open(path_to_file, "r")
     content = file.read()
     i = 0
@@ -39,19 +44,24 @@ def parse(path_to_file):
         else:
             for tmp in numbers:
                 new_library["IDS"] += tmp
-            Library += new_library.copy(),
+            LIBRARY += new_library.copy(),
         i += 1
     return content
 
 
 def main():
     parse(sys.argv[1])
-    for Lib in Library:
+    for Lib in LIBRARY:
         lib_ratio(Lib)
     print(B, L, D)
     print(S)
-    print(Library)
+    print(LIBRARY)
 
+    library_process = {"Idx": 0, "T": 0, "M": 0, "IDS": []}
+
+    print(NB_LIBRARY)
+    for tmp in WHICH_LIBRARY:
+        print(tmp)
 
 if __name__ == "__main__":
     main()
