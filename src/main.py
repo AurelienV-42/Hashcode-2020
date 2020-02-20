@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+from math import ceil
 
 # Input
 B = 0
@@ -15,7 +16,7 @@ WHICH_LIBRARY = []
 
 
 def lib_ratio(lib):
-    lib["R"] = lib["N"] / lib["M"] + lib["T"]
+    lib["R"] = ceil(lib["N"] / lib["M"] + lib["T"])
 
 
 def parse(path_to_file):
@@ -49,19 +50,28 @@ def parse(path_to_file):
     return content
 
 
-def main():
-    parse(sys.argv[1])
-    for Lib in LIBRARY:
-        lib_ratio(Lib)
-    print(B, L, D)
-    print(S)
-    print(LIBRARY)
-
-    library_process = {"Idx": 0, "T": 0, "M": 0, "IDS": []}
-
+def output():
+    global NB_LIBRARY, WHICH_LIBRARY
     print(NB_LIBRARY)
     for tmp in WHICH_LIBRARY:
-        print(tmp)
+        print(tmp["Idx"], tmp["Nb_books"])
+        for i in tmp["Idx_book"]:
+            print(i, end=' ')
+
+
+def algorithm():
+    global B, L, D, S, LIBRARY, NB_LIBRARY, WHICH_LIBRARY
+    for Lib in LIBRARY:
+        lib_ratio(Lib)
+    library_process = {"Idx": 0, "Nb_books": 0, "Idx_book": [3, 4, 2]}
+    WHICH_LIBRARY += library_process,
+
+
+def main():
+    parse(sys.argv[1])
+    algorithm()
+    output()
+
 
 if __name__ == "__main__":
     main()
