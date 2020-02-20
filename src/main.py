@@ -25,7 +25,7 @@ def parse(path_to_file):
     content = file.read()
     i = 0
     splitted = content.split('\n')
-    new_library = {"N": 0, "T": 0, "M": 0, "IDS": []}
+    new_library = {"N": 0, "T": 0, "M": 0, "IDS": [], "UP": 0, "ISUP": False}
     for line in splitted:
         numbers = line.split(' ')
         if len(numbers) == 1:
@@ -59,10 +59,24 @@ def output():
             print(i, end=' ')
 
 
+def loop():
+
+    days = 0
+
+
+    for i in range(0, len(LIBRARY)):
+        if LIBRARY[i]["UP"] != LIBRARY[i]["T"]:
+            LIBRARY[i]["UP"] += 1
+            days += 1
+        else:
+            print("LIBRARY", i, "is up at", days)
+
+
 def algorithm():
     global B, L, D, S, LIBRARY, NB_LIBRARY, WHICH_LIBRARY
     for Lib in LIBRARY:
         lib_ratio(Lib)
+    loop()
     library_process = {"Idx": 0, "Nb_books": 0, "Idx_book": [3, 4, 2]}
     WHICH_LIBRARY += library_process,
 
